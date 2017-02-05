@@ -12,7 +12,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-public class FlightSearchTests extends TestCase {
+public class TestFlightSearch extends TestCase {
 
 	public void test1() {
 		GregorianCalendar departureDate = new GregorianCalendar();
@@ -59,7 +59,7 @@ public class FlightSearchTests extends TestCase {
 	} 
 	
 	public static Test suite() {
-		return new TestSuite(FlightSearchTests.class);
+		return new TestSuite(TestFlightSearch.class);
 	}
 
 	public static void main(String[] args) {
