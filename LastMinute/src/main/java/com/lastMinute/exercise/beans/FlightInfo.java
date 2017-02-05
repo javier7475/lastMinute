@@ -3,7 +3,7 @@ package com.lastMinute.exercise.beans;
 import java.math.BigDecimal;
 
 /**
- * Class for storing 
+ * Class for storing flight reservation information
  *
  */
 public class FlightInfo {
