@@ -2,6 +2,10 @@ package com.lastMinute.exercise.beans;
 
 import java.math.BigDecimal;
 
+/**
+ * Class for storing 
+ *
+ */
 public class FlightInfo {
 
 	private String flightNo;

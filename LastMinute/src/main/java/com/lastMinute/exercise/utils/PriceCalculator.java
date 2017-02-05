@@ -3,10 +3,14 @@ package com.lastMinute.exercise.utils;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class FareCalculator {
+/**
+ * Class for calculating the price of a flight
+ *
+ */
+public class PriceCalculator {
 
-	public static BigDecimal getFare(int adults, int children, int infants, Date departureDate,
-			BigDecimal adultFare, BigDecimal infantFare) {
+	public static BigDecimal getPrice(int adults, int children, int infants, Date departureDate, BigDecimal adultPrice,
+			BigDecimal infantPrice) {
 		long daysTillDeparture = DateUtils.daysTillDate(departureDate);
 
 		BigDecimal daysFactor = null;
@@ -19,11 +23,11 @@ public class FareCalculator {
 		} else if (daysTillDeparture < 3) {
 			daysFactor = new BigDecimal("1.5");
 		}
-		BigDecimal adultsPrice = daysFactor.multiply(adultFare).multiply(new BigDecimal(adults));
-		BigDecimal childrenPrice = daysFactor.multiply(adultFare).multiply(new BigDecimal(children))
+		BigDecimal adultsTotal= daysFactor.multiply(adultPrice).multiply(new BigDecimal(adults));
+		BigDecimal childrenTotal= daysFactor.multiply(adultPrice).multiply(new BigDecimal(children))
 				.multiply(new BigDecimal("0.67"));
-		BigDecimal infantPrice = new BigDecimal(infants).multiply(infantFare);
+		BigDecimal infantTotal= new BigDecimal(infants).multiply(infantPrice);
 
-		return adultsPrice.add(childrenPrice).add(infantPrice);
+		return adultsTotal.add(childrenTotal).add(infantTotal);
 	}
 }

@@ -6,10 +6,10 @@ package com.lastMinute.exercise.exception;
  */
 public class LastMinuteException extends Exception {
 
-  private static final long serialVersionUID = -6159039702523104776L;
+	private static final long serialVersionUID = -6159039702523104776L;
 
-  public LastMinuteException(String message) {
-    super(message);
-  }
-  
+	public LastMinuteException(String message) {
+		super(message);
+	}
+
 }

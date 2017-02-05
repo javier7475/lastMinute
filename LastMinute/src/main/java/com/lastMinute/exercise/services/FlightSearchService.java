@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
-import org.json.JSONObject;
 
 import com.lastMinute.exercise.beans.FlightInfo;
 import com.lastMinute.exercise.dao.FlightsDAO;
@@ -17,36 +16,36 @@ import com.lastMinute.exercise.utils.Constants;
  * Implements the flight search service
  *
  */
-public class FlightSearchService implements IService {
+public class FlightSearchService extends Service {
 
-	public List<FlightInfo> searchFlight(String origin, String destination, String departureDate, int adults,
-			int children, int infants) throws LastMinuteException {
-		List<FlightInfo> result;
-		try {
-			result = new FlightsDAO().searchFlight(origin, destination,
-					new SimpleDateFormat(Constants.DATE_FORMAT).parse(departureDate), adults, children, infants);
-		} catch (ParseException e) {
-			throw new LastMinuteException("Invalid date");
-		}
-		if (result.isEmpty()) {
-			throw new NotFoundException("No flights found");
-		} else {
-			return result;
-		}
-	}
+	private String origin;
+	private String destination;
+	private String departureDate;
+	private int adults;
+	private int children;
+	private int infants;
 
-	@Override
-	public void validate(String json) throws LastMinuteException {
+	public FlightSearchService(String origin, String destination, String departureDate, int adults, int children,
+			int infants) {
+
+		this.origin = origin;
+		this.destination = destination;
+		this.departureDate = departureDate;
+		this.adults = adults;
+		this.children = children;
+		this.infants = infants;
 
 	}
 
-	public void validate(String origin, String destination, String departureDate, int adults, int children, int infants)
-			throws LastMinuteException {
-		if (!StringUtils.isEmpty(origin)) {
+	public void validateInput() throws LastMinuteException {
+		if (StringUtils.isEmpty(origin)) {
 			throw new LastMinuteException("Origin mandatory");
 		}
-		if (!StringUtils.isEmpty(destination)) {
+		if (StringUtils.isEmpty(destination)) {
 			throw new LastMinuteException("Destination mandatory");
+		}
+		if (StringUtils.isEmpty(departureDate)) {
+			throw new LastMinuteException("Departure date mandatory");
 		}
 		try {
 			new SimpleDateFormat("dd/MM/yyyy").parse(departureDate);
@@ -64,10 +63,68 @@ public class FlightSearchService implements IService {
 		}
 	}
 
+	public String getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+
+	public String getDestination() {
+		return destination;
+	}
+
+	public void setDestination(String destination) {
+		this.destination = destination;
+	}
+
+	public String getDepartureDate() {
+		return departureDate;
+	}
+
+	public void setDepartureDate(String departureDate) {
+		this.departureDate = departureDate;
+	}
+
+	public int getAdults() {
+		return adults;
+	}
+
+	public void setAdults(int adults) {
+		this.adults = adults;
+	}
+
+	public int getChildren() {
+		return children;
+	}
+
+	public void setChildren(int children) {
+		this.children = children;
+	}
+
+	public int getInfants() {
+		return infants;
+	}
+
+	public void setInfants(int infants) {
+		this.infants = infants;
+	}
+
 	@Override
-	public JSONObject execute(String json) throws LastMinuteException {
-		// TODO Auto-generated method stub
-		return null;
+	protected List<FlightInfo> doAction() throws LastMinuteException {
+		List<FlightInfo> result;
+		try {
+			result = new FlightsDAO().searchFlight(origin, destination,
+					new SimpleDateFormat(Constants.DATE_FORMAT).parse(departureDate), adults, children, infants);
+		} catch (ParseException e) {
+			throw new LastMinuteException("Invalid date");
+		}
+		if (result.isEmpty()) {
+			throw new NotFoundException("No flights found");
+		} else {
+			return result;
+		}
 	}
 
 }

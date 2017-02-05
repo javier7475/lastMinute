@@ -13,7 +13,7 @@ public class DateUtils {
 	}
 
 	public static Date getToday() {
-		Calendar now=new GregorianCalendar();
+		Calendar now = new GregorianCalendar();
 		now.set(Calendar.HOUR, 0);
 		now.set(Calendar.MINUTE, 0);
 		now.set(Calendar.SECOND, 0);

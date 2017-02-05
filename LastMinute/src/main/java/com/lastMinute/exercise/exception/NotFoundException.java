@@ -5,7 +5,7 @@ package com.lastMinute.exercise.exception;
  *
  */
 public class NotFoundException extends LastMinuteException {
-	
+
 	private static final long serialVersionUID = -1000627788367067059L;
 
 	public NotFoundException(String message) {

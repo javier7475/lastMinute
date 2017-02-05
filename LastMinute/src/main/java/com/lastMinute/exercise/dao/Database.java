@@ -1,5 +1,9 @@
 package com.lastMinute.exercise.dao;
 
+/**
+ * Class for storing the data. A database should be used.
+ *
+ */
 public class Database {
 
 	private static String[][] flights = { { "CPH", "FRA", "IB2818", "186" }, { "CPH", "LHR", "U23631", "152" },
