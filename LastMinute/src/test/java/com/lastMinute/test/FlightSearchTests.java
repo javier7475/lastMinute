@@ -46,6 +46,18 @@ public class FlightSearchTests extends TestCase {
 			assertTrue(false);
 		}
 	}
+	
+	public void test4() {
+		GregorianCalendar departureDate = new GregorianCalendar();
+		departureDate.add(Calendar.DATE, 2);
+		try {
+			List<FlightInfo> flights = new FlightsDAO().searchFlight("CDG", "FRA", departureDate.getTime(), 1, 2, 0);
+			assertTrue(flights.toString().equals("[]"));
+		} catch (NotFoundException e) {
+			assertTrue(false);
+		}
+	} 
+	
 	public static Test suite() {
 		return new TestSuite(FlightSearchTests.class);
 	}
