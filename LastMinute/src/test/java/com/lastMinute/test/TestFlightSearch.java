@@ -52,7 +52,7 @@ public class TestFlightSearch extends TestCase {
 		departureDate.add(Calendar.DATE, 2);
 		try {
 			List<FlightInfo> flights = new FlightsDAO().searchFlight("CDG", "FRA", departureDate.getTime(), 1, 2, 0);
-			assertTrue(flights.toString().equals("[a]"));
+			assertTrue(flights.toString().equals("[]"));
 		} catch (NotFoundException e) {
 			assertTrue(false);
 		}
