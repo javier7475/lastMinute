@@ -6,8 +6,29 @@
 <body>
 	Form just for test purposes
 	<form action="rest/flightSearch/search" method="GET">
-		Origin <input type="text" name="origin" value="AMS"><br>
-		Destination <input type="text" name="destination" value="FRA"><br>
+		Origin <select name="origin">
+			<option value="MAD">Madrid</option>
+			<option value="BCN">Barcelona</option> 
+			<option value="LHR">London</option>
+			<option value="CDG">Paris</option>
+			<option value="FRA">Frakfurt</option> 
+			<option value="IST">Istanbul</option>
+			<option value="AMS" selected>Amsterdam</option>
+			<option value="FCO">Rome</option>
+			<option value="CPH">Copenhagen</option>
+			</select> 
+			<br>
+		Destination <select name="destination">
+			<option value="MAD">Madrid</option>
+			<option value="BCN">Barcelona</option> 
+			<option value="LHR">London</option>
+			<option value="CDG">Paris</option>
+			<option value="FRA" selected>Frakfurt</option> 
+			<option value="IST">Istanbul</option>
+			<option value="AMS">Amsterdam</option>
+			<option value="FCO">Rome</option>
+			<option value="CPH">Copenhagen</option>
+			</select> <br>
 		Departure date <input type="text" name="departureDate"
 			value="01/01/2019"><br> Number of adults <input
 			type="text" name="adults" value="1"><br> Number of

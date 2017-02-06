@@ -16,7 +16,7 @@ import com.lastMinute.exercise.utils.Constants;
  * Implements the flight search service
  *
  */
-public class FlightSearchService extends Service {
+public class FlightSearchService extends Service<List<FlightInfo>> {
 
 	private String origin;
 	private String destination;
@@ -60,6 +60,9 @@ public class FlightSearchService extends Service {
 		}
 		if (infants < 0) {
 			throw new LastMinuteException("Invalid number of infants");
+		}
+		if (adults==0 && children==0 && infants==0) {
+			throw new LastMinuteException("The number of people is required");
 		}
 	}
 

@@ -8,13 +8,13 @@ import com.lastMinute.exercise.exception.LastMinuteException;
  * This way we force to create and invoke a method for validating the input.
  *
  */
-public abstract class Service {
+public abstract class Service<T> {
 
 	abstract protected void validateInput() throws LastMinuteException;
 
-	abstract protected Object doAction() throws LastMinuteException;
+	abstract protected T doAction() throws LastMinuteException;
 
-	public Object execute() throws LastMinuteException {
+	public T execute() throws LastMinuteException {
 		validateInput();
 		return doAction();
 	}
