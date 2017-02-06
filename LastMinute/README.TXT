@@ -1,4 +1,4 @@
-I have implemented a rest service to provide the solution. The service can be invoqued like this.
+I have implemented a rest service to provide the solution. The service can be invoked like this.
 
 The data is hardcoded in a Database class. A database should be used and a tool like hibernate too but I used memory for simplicity since the aim, scope developing time in unknown.
 

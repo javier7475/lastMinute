@@ -1,28 +1,23 @@
 package com.lastMinute.exercise.utils;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.concurrent.TimeUnit;
 
 public class DateUtils {
 
+	/**
+	 * @param date a date 
+	 * @return the number of days from current date till the given date
+	 */
 	public static long daysTillDate(Date date) {
 
 		return TimeUnit.DAYS.convert(date.getTime() - getToday().getTime(), TimeUnit.MILLISECONDS);
 	}
 
+	/**
+	 * @return current Date without time
+	 */
 	public static Date getToday() {
-		Calendar now = new GregorianCalendar();
-		SimpleDateFormat format=new SimpleDateFormat(Constants.DATE_FORMAT);
-		try {
-			return format.parse(format.format(now.getTime()));
-		} catch (ParseException e) {
-			// impossible to reach
-			e.printStackTrace();
-			return null;
-		}
+		return org.apache.commons.lang.time.DateUtils.truncate(new Date(), java.util.Calendar.DAY_OF_MONTH);
 	}
 }
